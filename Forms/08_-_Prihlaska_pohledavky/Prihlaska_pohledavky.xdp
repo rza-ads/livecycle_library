@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xfa generator="AdobeLiveCycleDesigner_V11.0.1.20130830.1.901444" APIVersion="3.6.13235.0"?>
-<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2021-04-20T07:00:42Z" uuid="1bd43536-033c-4d1d-8c51-2e1b48bd6e4a">
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2023-05-04T06:35:44Z" uuid="7a4d3c01-6fbe-4e67-977a-750b3a2d08b4">
 <template xmlns="http://www.xfa.org/schema/xfa-template/3.3/">
    <?formServer defaultPDFRenderFormat acrobat10.0dynamic?>
    <?formServer allowRenderCaching 0?>
@@ -17,7 +17,7 @@
                   <textEdit/>
                </ui>
                <value>
-                  <text>1.4.1-TEST</text>
+                  <text>1.5.1-TEST</text>
                </value>
                <font typeface="Myriad Pro" baselineShift="0pt" size="8pt">
                   <fill>
@@ -309,18 +309,146 @@ myFormVersionELPP = vf.rawValue;
 if (this.rawValue == '1') {
 	this.parent.parent._pravnicka_osoba.setInstances(0);
 	this.parent.parent._fyzicka_osoba.addInstance(1);
+	sharedLib.visibleIfHidden(spolecne_oddluzeni);
 }
 
 // pravnicka
 if (this.rawValue == '2') {
 	this.parent.parent._fyzicka_osoba.setInstances(0);
 	this.parent.parent._pravnicka_osoba.addInstance(1);
+	spolecne_oddluzeni.rawValue = null;
+	sharedLib.hideIfVisible(spolecne_oddluzeni);
 }
 
 </script>
                      </event>
-                     <?templateDesigner expand 1?></exclGroup>
+                     <?templateDesigner expand 1?>
+                     <event activity="initialize" name="event__initialize">
+                        <script contentType="application/x-javascript" runAt="both">
+// fyzicka
+if (this.rawValue != '1') {
+	sharedLib.hideIfVisible(spolecne_oddluzeni);
+}
+</script>
+                     </event>
+                  </exclGroup>
                   <bind match="none"/>
+                  <field name="spolecne_oddluzeni" w="95mm" h="7mm">
+                     <ui>
+                        <checkButton size="3.175mm">
+                           <border>
+                              <edge thickness="0.2mm">
+                                 <color value="130,130,130"/>
+                              </edge>
+                              <corner thickness="0.2mm">
+                                 <color value="130,130,130"/>
+                              </corner>
+                              <fill/>
+                           </border>
+                           <margin/>
+                        </checkButton>
+                     </ui>
+                     <font typeface="Myriad Pro">
+                        <fill>
+                           <color value="251,85,91"/>
+                        </fill>
+                     </font>
+                     <margin leftInset="12mm" rightInset="1mm"/>
+                     <para vAlign="middle"/>
+                     <value>
+                        <integer>0</integer>
+                     </value>
+                     <caption placement="right" reserve="75mm">
+                        <para vAlign="middle" spaceAbove="0pt"/>
+                        <font typeface="Myriad Pro" size="9pt">
+                           <fill>
+                              <color value="51,51,51"/>
+                           </fill>
+                        </font>
+                        <value>
+                           <text>Společné oddlužení manželů</text>
+                        </value>
+                     </caption>
+                     <items>
+                        <integer>1</integer>
+                        <integer>0</integer>
+                        <integer>2</integer>
+                     </items>
+                     <assist>
+                        <speak priority="caption"/>
+                     </assist>
+                     <bind match="dataRef" ref="$.spolecne_oddluzeni"/>
+                     <event activity="change" name="event__change">
+                        <script contentType="application/x-javascript">
+if (this.rawValue == "1") {
+	if (_fyzicka_osoba.count &lt; 2)
+		_fyzicka_osoba.addInstance(1);
+	if (dluznik.wrapper._fyzicka_osoba.count == 2) {
+		sharedLib.setOnValueChange(dluznik.wrapper.resolveNode("fyzicka_osoba[0]").udaje_osoba_wrapper.label_wrapper.label_name, labels.texts.dluznik1);
+		sharedLib.visibleIfHidden(dluznik.wrapper.resolveNode("fyzicka_osoba[0]").udaje_osoba_wrapper.label_wrapper.label_name);		
+		sharedLib.setOnValueChange(dluznik.wrapper.resolveNode("fyzicka_osoba[1]").udaje_osoba_wrapper.label_wrapper.label_name, labels.texts.dluznik2);
+		sharedLib.visibleIfHidden(dluznik.wrapper.resolveNode("fyzicka_osoba[1]").udaje_osoba_wrapper.label_wrapper.label_name);
+	}	
+} else {
+	if (_fyzicka_osoba.count &gt; 1)
+		_fyzicka_osoba.removeInstance(_fyzicka_osoba.count -1);
+
+	sharedLib.hideIfVisible(dluznik.wrapper.resolveNode("fyzicka_osoba[0]").udaje_osoba_wrapper.label_wrapper.label_name);			
+}
+
+/*
+if (this.rawValue == "1") {
+	var oDluznik = this.resolveNode("fyzicka_osoba[0].oznaceni_dluznika");
+	
+	if (oDluznik != null) {
+		sharedLib.visibleIfHidden(oDluznik);	
+		sharedLib.setOnCaptionChange(oDluznik , "Označení dlužníka:");
+		oDluznik.assist.toolTip = "Uveďte jméno a příjmení / název dlužníka"; 
+	};
+	oDluznik = this.resolveNode("fyzicka_osoba[1].oznaceni_dluznika");
+	
+	if (oDluznik != null) {
+		sharedLib.visibleIfHidden(oDluznik);	
+		sharedLib.setOnCaptionChange(oDluznik , "Označení dlužnice:");
+		oDluznik.assist.toolTip = "Uveďte jméno a příjmení / název dlužnice"; 
+	};
+}
+else {
+	var oDluznik = this.resolveNode("fyzicka_osoba[0].oznaceni_dluznika");
+	
+	if (oDluznik != null) {
+		sharedLib.hideIfVisible(oDluznik);	
+	};
+}
+*/
+
+
+/*if(labels &amp;&amp; labels.setIdentifikaceDluznikaTitle) {
+	labels.setIdentifikaceDluznikaTitle(_fyzicka_osoba.count);
+}
+*/
+</script>
+                     </event>
+                     <event activity="initialize" name="event__initialize">
+                        <script contentType="application/x-javascript">
+if (xfa.resolveNode("dluznik.wrapper.fyzicka_osoba") != null) {
+	if (this.rawValue == "1") {
+		if (dluznik.wrapper._fyzicka_osoba.count == 2) {
+			sharedLib.setOnValueChange(dluznik.wrapper.resolveNode("fyzicka_osoba[0]").udaje_osoba_wrapper.label_wrapper.label_name, labels.texts.dluznik1);
+			sharedLib.visibleIfHidden(dluznik.wrapper.resolveNode("fyzicka_osoba[0]").udaje_osoba_wrapper.label_wrapper.label_name);		
+			sharedLib.setOnValueChange(dluznik.wrapper.resolveNode("fyzicka_osoba[1]").udaje_osoba_wrapper.label_wrapper.label_name, labels.texts.dluznik2);
+			sharedLib.visibleIfHidden(dluznik.wrapper.resolveNode("fyzicka_osoba[1]").udaje_osoba_wrapper.label_wrapper.label_name);
+		}	
+	} else {
+		sharedLib.hideIfVisible(dluznik.wrapper.resolveNode("fyzicka_osoba[0]").udaje_osoba_wrapper.label_wrapper.label_name);			
+	}
+}	
+
+
+
+</script>
+                     </event>
+                  </field>
                   <?templateDesigner expand 1?></subform>
                <subform w="190mm" name="fyzicka_osoba" layout="tb">
                   <subform usehref="..\..\Fragments\udaje_osoba_sekce.xdp#som($template.osobni_udaje.udaje_osoba_wrapper)" name="udaje_osoba_wrapper">
@@ -2467,7 +2595,7 @@ else {
                               </format>
                               <validate>
                                  <message>
-                                    <text name="formatTest">Datum narození uvádějte ve formátu dd.mm.rrrr.</text>
+                                    <text name="formatTest">Datum splatnosti uvádějte ve formátu d.m.rrrr.</text>
                                  </message>
                                  <picture>date{D.M.YYYY}</picture>
                               </validate>
@@ -6795,7 +6923,7 @@ else {
                            <validate>
                               <picture>null{}|date{D.M.YYYY}</picture>
                               <message>
-                                 <text name="formatTest">Datum narození uvádějte ve formátu dd.mm.rrrr.</text>
+                                 <text name="formatTest">Datum dohody uvádějte ve formátu d.m.rrrr.</text>
                               </message>
                            </validate>
                            <format>
@@ -8954,7 +9082,7 @@ else {
                               <validate>
                                  <picture>null{}|date{D.M.YYYY}</picture>
                                  <message>
-                                    <text name="formatTest">Datum narození uvádějte ve formátu dd.mm.rrrr.</text>
+                                    <text name="formatTest">Datum dohody uvádějte ve formátu d.m.rrrr.</text>
                                  </message>
                               </validate>
                               <format>
@@ -10838,7 +10966,7 @@ else {
                            </assist>
                            <validate>
                               <message>
-                                 <text name="formatTest">Datum narození uvádějte ve formátu dd.mm.rrrr.</text>
+                                 <text name="formatTest">Datum dohody uvádějte ve formátu d.m.rrrr.</text>
                               </message>
                               <picture>date{D.M.YYYY}</picture>
                            </validate>
@@ -12448,7 +12576,7 @@ if (sigField1) {
                         </border>
                         <bind match="none"/>
                         <event activity="click" name="event__click">
-                           <submit format="pdf" textEncoding="UTF-16" xdpContent="pdf datasets" target="https://as022.cca.cz:9407/ePodatelna/servlet/PrijmiPdfFormServlet?subtyp_podani=7"/>
+                           <submit format="pdf" textEncoding="UTF-16" xdpContent="pdf datasets" target="https://epodatelna.justice.cz/ePodatelna/servlet/PrijmiPdfFormServlet?subtyp_podani=7"/>
                         </event>
                         <margin topInset="0mm"/>
                         <traversal>
@@ -13272,7 +13400,7 @@ function PreSignCheck_local() {
       </border>
       <?templateDesigner Hyphenation excludeInitialCap:1, excludeAllCaps:1, wordCharCnt:7, remainCharCnt:3, pushCharCnt:3?>
       <?templateDesigner expand 1?>
-      <?renderCache.subset "Myriad Pro" 0 0 UTF-16 2 308 00010009000A000D000E000F00100011001200130014001500170018001B0022002300240025002600270028002A002B002C002D002E002F0030003100330034003500360037003B00420043004400450046004700480049004A004B004C004D004E004F00500051005300540055005600570059005A005B0066006F00C800CF00D300D800DD00DE00E200E4018E01CF01D201D401F201FE0343?>
+      <?renderCache.subset "Myriad Pro" 0 0 UTF-16 2 312 00010009000A000D000E000F001000110012001300140015001600170018001B0022002300240025002600270028002A002B002C002D002E002F0030003100330034003500360037003B00420043004400450046004700480049004A004B004C004D004E004F00500051005300540055005600570059005A005B0066006F00C800CF00D300D800DD00DE00E200E4018E01CF01D201D401F201FE0343?>
       <?renderCache.subset "Myriad Pro" 1 0 UTF-16 2 220 0001000C000D000F00100011001B00220024002A002B002C002F003000310034003500360037003B0042004300440045004600470049004A004B004C004D004E004F0050005100530054005500560057005A005B00A600C800CF00D300DD00DE00E200E401CF01D401EA01F201FE?>
    </subform>
    <?templateDesigner DefaultPreviewDynamic 1?>
@@ -13293,11 +13421,11 @@ function PreSignCheck_local() {
    <?templateDesigner XDPPreviewFormat 20?>
    <?templateDesigner DefaultCaptionFontSettings face:Myriad Pro;size:10;weight:normal;style:normal?>
    <?templateDesigner DefaultValueFontSettings face:Myriad Pro;size:10;weight:normal;style:normal?>
-   <?templateDesigner SavePDFWithLog 0?>
    <?templateDesigner SaveTaggedPDF 0?>
    <?templateDesigner SavePDFWithEmbeddedFonts 0?>
-   <?templateDesigner Zoom 143?>
+   <?templateDesigner SavePDFWithLog 0?>
    <?templateDesigner FormTargetVersion 33?>
+   <?templateDesigner Zoom 122?>
    <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:0, crosshairs:0?>
    <?templateDesigner Guidelines v:213977400;v:306965200;v:69896700;h:435543000;h:437201000?></template>
 <config xmlns="http://www.xfa.org/schema/xci/3.0/">
@@ -13453,7 +13581,7 @@ function PreSignCheck_local() {
    <xsdConnection name="DataConnection" dataDescription="ELPP">
       <uri>..\..\Data\Xsd\08_-_Prihlaska_pohledavky.xsd</uri>
       <rootElement>ELPP</rootElement>
-      <?templateDesigner fileDigest shaHash="90Gi6u0khyATBjAxWrtdqaKfsHk="?></xsdConnection>
+      <?templateDesigner fileDigest shaHash="GTiUHCthZlLucRjmlIFAosiq+j8="?></xsdConnection>
 </connectionSet>
 <xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
    <xfa:data xfa:dataNode="dataGroup"/>
@@ -13474,7 +13602,7 @@ function PreSignCheck_local() {
                <rocnik/>
             </spisznacka>
          </hlavicka>
-         <dluznik dd:model="choice" fo_po_switch="">
+         <dluznik dd:model="choice" fo_po_switch="" spolecne_oddluzeni="">
             <fyzicka_osoba dd:maxOccur="2">
                <osobni_udaje>
                   <osoba>
@@ -14119,14 +14247,14 @@ function PreSignCheck_local() {
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.2-c001 63.139439, 2011/06/07-10:39:26        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
-         <xmp:MetadataDate>2021-04-20T07:00:42Z</xmp:MetadataDate>
+         <xmp:MetadataDate>2023-05-04T06:35:44Z</xmp:MetadataDate>
          <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
       </rdf:Description>
       <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
          <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
       </rdf:Description>
       <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
-         <xmpMM:DocumentID>uuid:1bd43536-033c-4d1d-8c51-2e1b48bd6e4a</xmpMM:DocumentID>
+         <xmpMM:DocumentID>uuid:7a4d3c01-6fbe-4e67-977a-750b3a2d08b4</xmpMM:DocumentID>
          <xmpMM:InstanceID>uuid:45f61fe7-6399-4f36-bb3f-5f4c3176ee05</xmpMM:InstanceID>
       </rdf:Description>
       <rdf:Description xmlns:pdfuaid="http://www.aiim.org/pdfua/ns/id/" rdf:about="">

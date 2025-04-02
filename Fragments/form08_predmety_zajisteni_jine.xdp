@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xfa generator="AdobeLiveCycleDesigner_V11.0.0.20130303.1.892433" APIVersion="3.6.13061.0"?>
-<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2020-12-17T12:20:35Z" uuid="2d1b2616-3702-4117-9b00-78bc615125a3">
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2023-05-02T13:40:20Z" uuid="0f675ef7-48d4-4304-a8ce-674f555b72fd">
 <template xmlns="http://www.xfa.org/schema/xfa-template/3.6/">
    <?formServer defaultPDFRenderFormat acrobat11.0static?>
    <subform name="form1" locale="cs_CZ" layout="tb">
@@ -260,7 +260,7 @@ else  {
                         <validate>
                            <picture>null{}|date{D.M.YYYY}</picture>
                            <message>
-                              <text name="formatTest">Datum narození uvádějte ve formátu dd.mm.rrrr.</text>
+                              <text name="formatTest">Datum vzniku uvádějte ve formátu d.m.rrrr.</text>
                            </message>
                         </validate>
                         <format>
@@ -459,7 +459,7 @@ if (_predmet_zajisteni_row.count &gt; 1) {
    <?templateDesigner SaveTaggedPDF 1?>
    <?templateDesigner SavePDFWithEmbeddedFonts 1?>
    <?templateDesigner FormTargetVersion 36?>
-   <?templateDesigner Zoom 97?>
+   <?templateDesigner Zoom 81?>
    <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?></template>
 <config xmlns="http://www.xfa.org/schema/xci/3.0/">
    <agent name="designer">
@@ -487,14 +487,14 @@ if (_predmet_zajisteni_row.count &gt; 1) {
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.2-c001 63.139439, 2011/06/07-10:39:26        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
-         <xmp:MetadataDate>2020-12-17T12:20:35Z</xmp:MetadataDate>
+         <xmp:MetadataDate>2023-05-02T13:40:20Z</xmp:MetadataDate>
          <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
       </rdf:Description>
       <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
          <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
       </rdf:Description>
       <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
-         <xmpMM:DocumentID>uuid:2d1b2616-3702-4117-9b00-78bc615125a3</xmpMM:DocumentID>
+         <xmpMM:DocumentID>uuid:0f675ef7-48d4-4304-a8ce-674f555b72fd</xmpMM:DocumentID>
       </rdf:Description>
       <rdf:Description xmlns:lcd="http://ns.adobe.com/livecycle/designer/" xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
          <lcd:fragmentCatalog>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xfa generator="Designer_V6.1.0.20150517.1.919161" APIVersion="3.6.15103.0"?>
-<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2020-06-08T19:24:51Z" uuid="4a706e3f-330b-406d-bfa4-1bdc49c927b3">
+<?xfa generator="AdobeLiveCycleDesigner_V11.0.0.20130303.1.892433" APIVersion="3.6.13061.0"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2024-06-10T16:59:07Z" uuid="08d8468e-1748-44f5-a411-574771346934">
 <template xmlns="http://www.xfa.org/schema/xfa-template/3.6/">
    <?formServer defaultPDFRenderFormat acrobat11.0static?>
    <subform name="spisznacka" locale="cs_CZ" layout="tb">
@@ -636,10 +636,10 @@ if (xfa.event.newText.match(/[^0-9]/)) {
             </value>
             <margin topInset="1mm" bottomInset="1mm" rightInset="4mm"/>
          </draw>
-         <?templateDesigner expand 1?>
          <?templateDesigner isFragment yes?>
          <?templateDesigner fragmentTitle soud_spis_znacka_ins_spravce?>
-         <?templateDesigner fragmentDescription Soud spisová značka (určeno ins. správci)?></subform>
+         <?templateDesigner fragmentDescription Soud spisová značka (určeno ins. správci)?>
+         <?templateDesigner expand 0?></subform>
       <subform w="276.925mm" name="soud_spis_znacka_landscape" y="3mm" h="35.001mm">
          <subform w="114mm" minH="7mm" layout="lr-tb" name="soud_nazev" y="14.099mm">
             <margin bottomInset="0mm" topInset="0mm"/>
@@ -953,6 +953,310 @@ if (xfa.event.newText.match(/[^0-9]/)) {
          <?templateDesigner fragmentTitle soud_spis_znacka_landscape?>
          <?templateDesigner fragmentDescription Soud spisová značka landscape?>
          <?templateDesigner expand 0?></subform>
+      <subform y="105.003mm" w="190.2mm" name="soud_spis_znacka_rejstrik">
+         <bind match="none"/>
+         <keep intact="none"/>
+         <subform w="114mm" minH="7mm" layout="lr-tb" name="soud_nazev" y="11mm">
+            <margin bottomInset="0mm" topInset="1mm"/>
+            <field name="nazev" w="114mm" h="7.5mm">
+               <ui>
+                  <choiceList>
+                     <border>
+                        <edge thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </edge>
+                        <corner thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </corner>
+                     </border>
+                  </choiceList>
+               </ui>
+               <font typeface="Myriad Pro">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="2mm" rightInset="2mm"/>
+               <para marginLeft="2.835pt" marginRight="2.835pt" vAlign="middle" spaceAbove="2pt"/>
+               <caption reserve="17.5mm">
+                  <para vAlign="middle" spaceAbove="1pt"/>
+                  <value>
+                     <text>Soudu</text>
+                  </value>
+                  <font typeface="Myriad Pro" size="9pt">
+                     <fill>
+                        <color value="51,51,51"/>
+                     </fill>
+                  </font>
+               </caption>
+               <bind match="dataRef" ref="$.soud"/>
+               <items>
+                  <text>Městskému soudu v Praze</text>
+                  <text>Krajskému soudu v Praze</text>
+                  <text>Krajskému soudu v Českých Budějovicích</text>
+                  <text>Krajskému soudu v Plzni</text>
+                  <text>Krajskému soudu v Ústí nad Labem</text>
+                  <text>Krajskému soudu v Ústí nad Labem – pobočka v Liberci</text>
+                  <text>Krajskému soudu v Hradci Králové</text>
+                  <text>Krajskému soudu v Hradci Králové – pobočka v Pardubicích</text>
+                  <text>Krajskému soudu v Brně</text>
+                  <text>Krajskému soudu v Ostravě</text>
+                  <text>Krajskému soudu v Ostravě – pobočka v Olomouci</text>
+               </items>
+               <items save="1" presence="hidden">
+                  <text>MSPH</text>
+                  <text>KSPH</text>
+                  <text>KSCB</text>
+                  <text>KSPL</text>
+                  <text>KSUL</text>
+                  <text>KSLB</text>
+                  <text>KSHK</text>
+                  <text>KSPA</text>
+                  <text>KSBR</text>
+                  <text>KSOS</text>
+                  <text>KSOL</text>
+               </items>
+               <assist>
+                  <toolTip>Označte soud, ke kterému je návrh podáván.</toolTip>
+                  <speak priority="toolTip"/>
+               </assist>
+            </field>
+            <bind match="none"/>
+            <?templateDesigner expand 0?></subform>
+         <subform layout="lr-tb" minH="7mm" name="spisova_znacka" w="107mm" y="19.8mm">
+            <margin bottomInset="1mm" topInset="0mm" leftInset="0mm" rightInset="1mm"/>
+            <bind match="none"/>
+            <draw h="7.5mm" name="Label" w="19.53mm">
+               <font typeface="Myriad Pro" size="9pt">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="0mm" leftInset="2mm" rightInset="0mm" topInset="0.5mm"/>
+               <para spaceAbove="0pt" vAlign="middle"/>
+               <ui>
+                  <textEdit>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <value>
+                  <text>Spis. značka</text>
+               </value>
+            </draw>
+            <field access="readOnly" h="7.5mm" name="zn_soud" w="15mm" x="1.161389in">
+               <assist>
+                  <speak priority="toolTip"/>
+                  <toolTip>Uveďte spisovou značku insolvenčního řízení.</toolTip>
+               </assist>
+               <border>
+                  <edge presence="hidden"/>
+               </border>
+               <font typeface="Myriad Pro" weight="bold">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="1mm" leftInset="0mm" rightInset="0mm" topInset="1mm"/>
+               <para hAlign="center" marginLeft="0pt" spaceAbove="2pt" vAlign="middle"/>
+               <ui>
+                  <textEdit>
+                     <border>
+                        <corner thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </corner>
+                        <edge thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </edge>
+                     </border>
+                  </textEdit>
+               </ui>
+               <bind ref="$.soud" match="dataRef"/>
+               <value>
+                  <text maxChars="4"/>
+               </value>
+            </field>
+            <field name="senat" w="9mm" h="7.5mm" x="1.751944in">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <corner thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </corner>
+                        <edge thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </edge>
+                     </border>
+                  </textEdit>
+               </ui>
+               <font typeface="Myriad Pro" weight="bold">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="1mm" leftInset="0mm" rightInset="0mm" topInset="1mm"/>
+               <para hAlign="center" spaceAbove="2pt" vAlign="middle"/>
+               <assist>
+                  <speak priority="toolTip"/>
+                  <toolTip>Uveďte spisovou značku insolvenčního řízení.</toolTip>
+               </assist>
+               <border>
+                  <edge presence="hidden"/>
+               </border>
+               <bind ref="$.senat" match="dataRef"/>
+               <value>
+                  <text maxChars="3"/>
+               </value>
+               <event activity="change" name="event__change">
+                  <script contentType="application/x-javascript">
+if (xfa.event.newText.match(/[^0-9]/)) {
+	xfa.event.change = "";
+}
+</script>
+               </event>
+            </field>
+            <field h="7.5mm" name="rejstrik" w="12mm" x="2.106278in">
+               <border>
+                  <edge presence="hidden"/>
+               </border>
+               <font typeface="Myriad Pro" weight="bold">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="1mm" leftInset="0mm" rightInset="0mm" topInset="1mm"/>
+               <para hAlign="center" spaceAbove="2pt" vAlign="middle"/>
+               <ui>
+                  <textEdit>
+                     <border>
+                        <corner thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </corner>
+                        <edge thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </edge>
+                     </border>
+                  </textEdit>
+               </ui>
+               <bind ref="$.rejstrik" match="dataRef"/>
+               <value>
+                  <text maxChars="5"/>
+               </value>
+               <assist>
+                  <toolTip>Uveďte rejstřík spisové značky.</toolTip>
+               </assist>
+            </field>
+            <field name="cislo" w="15mm" h="7.5mm" x="2.460611in">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <corner thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </corner>
+                        <edge thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </edge>
+                     </border>
+                  </textEdit>
+               </ui>
+               <font typeface="Myriad Pro" weight="bold">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="1mm" leftInset="0mm" rightInset="0mm" topInset="1mm"/>
+               <para hAlign="center" spaceAbove="2pt" vAlign="middle"/>
+               <assist>
+                  <speak priority="toolTip"/>
+                  <toolTip>Uveďte spisovou značku insolvenčního řízení.</toolTip>
+               </assist>
+               <border>
+                  <edge presence="hidden"/>
+               </border>
+               <event activity="change" name="event__change">
+                  <script contentType="application/x-javascript">
+if (xfa.event.newText.match(/[^0-9]/)) {
+	xfa.event.change = "";
+}
+</script>
+               </event>
+               <bind ref="$.bc" match="dataRef"/>
+               <value>
+                  <text maxChars="6"/>
+               </value>
+            </field>
+            <draw h="7.5mm" name="Lomeno" w="2.5mm" x="3.051167in">
+               <font typeface="Myriad Pro">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para hAlign="center" vAlign="middle"/>
+               <ui>
+                  <textEdit>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <value>
+                  <text>/</text>
+               </value>
+            </draw>
+            <field name="rok" w="12mm" h="7.5mm" x="3.149597in">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <corner thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </corner>
+                        <edge thickness="0.1mm">
+                           <color value="180,180,180"/>
+                        </edge>
+                     </border>
+                  </textEdit>
+               </ui>
+               <font typeface="Myriad Pro" weight="bold">
+                  <fill>
+                     <color value="51,51,51"/>
+                  </fill>
+               </font>
+               <margin bottomInset="1mm" leftInset="0mm" rightInset="1mm" topInset="1mm"/>
+               <para hAlign="center" spaceAbove="2pt" vAlign="middle"/>
+               <assist>
+                  <speak priority="toolTip"/>
+                  <toolTip>Uveďte spisovou značku insolvenčního řízení.</toolTip>
+               </assist>
+               <border>
+                  <edge presence="hidden"/>
+               </border>
+               <bind ref="$.rocnik" match="dataRef"/>
+               <value>
+                  <text maxChars="4"/>
+               </value>
+               <event activity="change" name="event__change">
+                  <script contentType="application/x-javascript">
+if (xfa.event.newText.match(/[^0-9]/)) {
+	xfa.event.change = "";
+}
+</script>
+               </event>
+            </field>
+            <?templateDesigner expand 0?></subform>
+         <draw name="Rectangle1" w="55mm" h="35mm" x="131.2mm" y="0mm">
+            <value>
+               <rectangle>
+                  <edge thickness="0.05mm" stroke="dashed">
+                     <color value="180,180,180"/>
+                  </edge>
+                  <corner radius="5.08mm" thickness="0.05mm" stroke="dashed">
+                     <color value="180,180,180"/>
+                  </corner>
+               </rectangle>
+            </value>
+            <margin topInset="1mm" bottomInset="1mm" rightInset="4mm"/>
+         </draw>
+         <?templateDesigner expand 1?>
+         <?templateDesigner isFragment yes?>
+         <?templateDesigner fragmentTitle soud_spis_znacka_rejstrik?></subform>
       <?templateDesigner expand 1?>
       <?renderCache.subset "Myriad Pro" 0 0 UTF-16 2 60 0001000F0010003400420045004A004C004F0050005100540056005B01CF?>
       <?renderCache.subset "Myriad Pro" 1 0 UTF-16 2 12 002A002F0034?>
@@ -962,7 +1266,7 @@ if (xfa.event.newText.match(/[^0-9]/)) {
    <?templateDesigner Grid show:0, snap:0, units:17, color:ff8080, origin:(0,0), interval:(158750,158750), objsnap:0, guidesnap:0, pagecentersnap:0?>
    <?templateDesigner FormTargetVersion 36?>
    <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
-   <?templateDesigner Zoom 103?></template>
+   <?templateDesigner Zoom 70?></template>
 <config xmlns="http://www.xfa.org/schema/xci/3.0/">
    <agent name="designer">
       <!--  [0..n]  -->
@@ -998,11 +1302,17 @@ if (xfa.event.newText.match(/[^0-9]/)) {
 </config>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.4-c005 78.150055, 2013/08/07-22:58:47        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:pdf="http://ns.adobe.com/pdf/1.3/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:lcd="http://ns.adobe.com/livecycle/designer/" xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
-         <xmp:MetadataDate>2020-06-08T19:24:51Z</xmp:MetadataDate>
-         <xmp:CreatorTool>Designer 6.1</xmp:CreatorTool>
-         <pdf:Producer>Designer 6.1</pdf:Producer>
-         <xmpMM:DocumentID>uuid:4a706e3f-330b-406d-bfa4-1bdc49c927b3</xmpMM:DocumentID>
+      <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
+         <xmp:MetadataDate>2024-06-10T16:59:07Z</xmp:MetadataDate>
+         <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
+      </rdf:Description>
+      <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
+         <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
+      </rdf:Description>
+      <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
+         <xmpMM:DocumentID>uuid:08d8468e-1748-44f5-a411-574771346934</xmpMM:DocumentID>
+      </rdf:Description>
+      <rdf:Description xmlns:lcd="http://ns.adobe.com/livecycle/designer/" xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
          <lcd:fragmentCatalog>
             <rdf:Seq>
                <rdf:li rdf:parseType="Resource">
@@ -1045,6 +1355,20 @@ if (xfa.event.newText.match(/[^0-9]/)) {
                      </rdf:Alt>
                   </dc:description>
                   <dc:identifier>$template.spisznacka.soud_spis_znacka_landscape</dc:identifier>
+                  <lcd:fragmentRole>Subform</lcd:fragmentRole>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <dc:title>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">soud_spis_znacka_rejstrik</rdf:li>
+                     </rdf:Alt>
+                  </dc:title>
+                  <dc:description>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default"/>
+                     </rdf:Alt>
+                  </dc:description>
+                  <dc:identifier>$template.spisznacka.soud_spis_znacka_rejstrik</dc:identifier>
                   <lcd:fragmentRole>Subform</lcd:fragmentRole>
                </rdf:li>
             </rdf:Seq>
@@ -1161,7 +1485,7 @@ if (xfa.event.newText.match(/[^0-9]/)) {
    <xsdConnection name="DataConnection" dataDescription="spisznacka">
       <uri>..\Data\Xsd\fragents_xsd\spisznacka.xsd</uri>
       <rootElement>spisznacka</rootElement>
-      <?templateDesigner fileDigest shaHash="LT2j5PgSO+MWpnJp2Aj7Pw3Ea4M="?></xsdConnection>
+      <?templateDesigner fileDigest shaHash="FYGdRbifFLj2+jlq2xtbufzx06o="?></xsdConnection>
 </connectionSet>
 <xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
    <xfa:data xfa:dataNode="dataGroup"/>

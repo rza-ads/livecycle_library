@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xfa generator="AdobeLiveCycleDesigner_V11.0.1.20130830.1.901444" APIVersion="3.6.13235.0"?>
-<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2021-04-30T09:38:49Z" uuid="2f3367da-6111-4e54-b487-0dea5c03285f">
+<?xfa generator="AdobeLiveCycleDesigner_V11.0.0.20130303.1.892433" APIVersion="3.6.13061.0"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2022-07-28T06:34:09Z" uuid="34a16070-10ef-4519-b356-5561422c2770">
 <template xmlns="http://www.xfa.org/schema/xfa-template/3.3/">
    <?formServer defaultPDFRenderFormat acrobat10.0dynamic?>
    <?formServer allowRenderCaching 0?>
@@ -12380,6 +12380,190 @@ _hotove_vydaje_row.addInstance(1);
                               </field>
                               <?templateDesigner expand 1?></subform>
                            <?templateDesigner expand 0?></subform>
+                        <subform layout="row" name="hotove_vydaje_celk_bezDPH" x="0mm">
+                           <assist role="TR"/>
+                           <draw w="4.960625in" name="label" minH="7mm" colSpan="4" x="0mm" y="0mm">
+                              <ui>
+                                 <textEdit>
+                                    <margin/>
+                                 </textEdit>
+                              </ui>
+                              <value>
+                                 <text>Hotové výdaje insolvenčního správce bez DPH:</text>
+                              </value>
+                              <font typeface="Myriad Pro" size="8pt">
+                                 <fill>
+                                    <color value="51,51,51"/>
+                                 </fill>
+                              </font>
+                              <para vAlign="middle" marginLeft="2.835pt" spaceAbove="1pt" marginRight="2.835pt"/>
+                              <margin topInset="0.5mm" bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm"/>
+                              <border>
+                                 <edge thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </edge>
+                                 <corner thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </corner>
+                              </border>
+                              <keep intact="none"/>
+                           </draw>
+                           <field name="vyse" minH="7mm" w="1.181097in" y="0mm">
+                              <ui>
+                                 <numericEdit>
+                                    <border>
+                                       <edge thickness="0.1mm">
+                                          <color value="180,180,180"/>
+                                       </edge>
+                                       <corner thickness="0.1mm">
+                                          <color value="180,180,180"/>
+                                       </corner>
+                                       <fill/>
+                                    </border>
+                                 </numericEdit>
+                              </ui>
+                              <font typeface="Myriad Pro">
+                                 <fill>
+                                    <color value="51,51,51"/>
+                                 </fill>
+                              </font>
+                              <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+                              <para vAlign="middle" marginLeft="0pt" marginRight="2.835pt" hAlign="right" spaceAbove="2pt"/>
+                              <value>
+                                 <decimal leadDigits="11"/>
+                              </value>
+                              <border>
+                                 <edge thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </edge>
+                                 <corner thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </corner>
+                              </border>
+                              <format>
+                                 <picture>null{9}|zero{9}|num{zz,zzz,zzz,zz9.zz}</picture>
+                              </format>
+                              <event activity="initialize" name="event__initialize">
+                                 <script contentType="application/x-javascript">
+sharedLib.setFontSizeFromValue(this, null, 10);
+</script>
+                              </event>
+                              <bind match="dataRef" ref="$.vyse"/>
+                              <assist>
+                                 <toolTip>Uveďte částku v Kč.</toolTip>
+                              </assist>
+                           </field>
+                           <field name="zalohove_neuhrazeno" minH="7mm" w="1.181097in" y="0mm">
+                              <ui>
+                                 <numericEdit>
+                                    <border>
+                                       <edge thickness="0.1mm">
+                                          <color value="180,180,180"/>
+                                       </edge>
+                                       <corner thickness="0.1mm">
+                                          <color value="180,180,180"/>
+                                       </corner>
+                                       <fill/>
+                                    </border>
+                                 </numericEdit>
+                              </ui>
+                              <font typeface="Myriad Pro">
+                                 <fill>
+                                    <color value="51,51,51"/>
+                                 </fill>
+                              </font>
+                              <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+                              <para vAlign="middle" marginLeft="0pt" marginRight="2.835pt" hAlign="right" spaceAbove="2pt"/>
+                              <value>
+                                 <decimal leadDigits="11">0</decimal>
+                              </value>
+                              <border>
+                                 <edge thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </edge>
+                                 <corner thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </corner>
+                              </border>
+                              <format>
+                                 <picture>null{9}|zero{9}|num{zz,zzz,zzz,zz9.zz}</picture>
+                              </format>
+                              <event activity="initialize" name="event__initialize">
+                                 <script contentType="application/x-javascript">
+sharedLib.setFontSizeFromValue(this, null, 10);
+</script>
+                              </event>
+                              <bind match="dataRef" ref="$.neuhrazeno"/>
+                              <assist>
+                                 <toolTip>Uveďte částku v Kč.</toolTip>
+                              </assist>
+                           </field>
+                           <border>
+                              <edge presence="hidden"/>
+                              <fill>
+                                 <color value="245,245,250"/>
+                              </fill>
+                           </border>
+                           <bind match="dataRef" ref="$.hotove_vydaje_celk_bezDPH"/>
+                           <field name="zbyva" minH="7mm" w="28.5mm" y="0mm">
+                              <ui>
+                                 <numericEdit>
+                                    <border>
+                                       <edge thickness="0.1mm">
+                                          <color value="180,180,180"/>
+                                       </edge>
+                                       <fill/>
+                                       <corner thickness="0.1mm">
+                                          <color value="180,180,180"/>
+                                       </corner>
+                                    </border>
+                                 </numericEdit>
+                              </ui>
+                              <font typeface="Myriad Pro">
+                                 <fill>
+                                    <color value="51,51,51"/>
+                                 </fill>
+                              </font>
+                              <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+                              <para vAlign="middle" marginLeft="0pt" marginRight="2.835pt" hAlign="right" spaceAbove="2pt"/>
+                              <value>
+                                 <decimal leadDigits="11">0</decimal>
+                              </value>
+                              <border>
+                                 <edge thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </edge>
+                                 <corner thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </corner>
+                              </border>
+                              <format>
+                                 <picture>null{9}|zero{9}|num{zz,zzz,zzz,zz9.zz}</picture>
+                              </format>
+                              <event activity="initialize" name="event__initialize">
+                                 <script contentType="application/x-javascript">
+sharedLib.setFontSizeFromValue(this, null, 10);
+</script>
+                              </event>
+                              <bind match="dataRef" ref="$.zbyva"/>
+                              <assist>
+                                 <toolTip>Uveďte částku v Kč.</toolTip>
+                              </assist>
+                           </field>
+                           <subform layout="lr-tb" name="buttons" w="0.236222in">
+                              <border>
+                                 <corner thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </corner>
+                                 <edge thickness="0.2mm">
+                                    <color value="130,130,130"/>
+                                 </edge>
+                                 <fill/>
+                              </border>
+                              <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                              <bind match="none"/>
+                              <?templateDesigner expand 1?></subform>
+                           <?templateDesigner expand 1?></subform>
                         <subform layout="row" name="hotove_vydaje_row" x="0mm">
                            <assist role="TR"/>
                            <field name="vydaj" y="0mm" x="0mm" w="4.960625in" colSpan="4" minH="7mm">
@@ -15361,6 +15545,9 @@ var texts =
 
 	sec_C5_headerBezDPH		: "Celková odměna insolvenčního správce:",
 	sec_C5_headerDPH		: "Celková odměna insolvenčního správce bez DPH:",
+	
+	sec_C5_headerHotoveBezDPH	: "Hotové výdaje insolvenčního správce:",
+	sec_C5_headerHotoveDPH		: "Hotové výdaje insolvenčního správce s DPH:",
 
 	sec_C5_dalsi_headerDPH		: "Odměna insolvenčního správce s DPH",
 	sec_C5_dalsi_headerBezDPH	: "Odměna insolvenčního správce bez DPH",
@@ -15923,11 +16110,15 @@ function setOnDPH (eraseContent) {
 	if (isDPH ()) {
 		sharedLib.visibleIfHidden(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.celkova_odmena_DPH);
 		sharedLib.setOnValueChange(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.celkova_odmena.label, labels.texts.sec_C5_headerDPH);
+		sharedLib.visibleIfHidden(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.hotove_vydaje_celk_bezDPH);
+		sharedLib.setOnValueChange(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.hotove_vydaje_celk.label, labels.texts.sec_C5_headerHotoveDPH);
 	//	if (obj) sharedLib.setOnValueChange(obj , labels.texts.sec_C5_3_headerDPH)
 	}
 	else {
 		sharedLib.hideIfVisible(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.celkova_odmena_DPH, eraseContent);
+		sharedLib.hideIfVisible(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.hotove_vydaje_celk_bezDPH, eraseContent);
 		sharedLib.setOnValueChange(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.celkova_odmena.label, labels.texts.sec_C5_headerBezDPH);
+		sharedLib.setOnValueChange(Vydaje_majetkove_podstaty.wrapper.vyuctovani_odmeny.wrapper.odmena_ins_spravce_wrapper.odmena_ins_spravce.hotove_vydaje_celk.label, labels.texts.sec_C5_headerHotoveBezDPH);
 	//	if (obj) sharedLib.setOnValueChange(obj , labels.texts.sec_C5_3_headerBezDPH)
 	}
 };
@@ -15991,7 +16182,7 @@ function setOnDruhPohl(oPohledavka_row_tbl, zpusob_reseni) {
       </border>
       <?templateDesigner Hyphenation excludeInitialCap:1, excludeAllCaps:1, wordCharCnt:7, remainCharCnt:3, pushCharCnt:3?>
       <?templateDesigner expand 1?>
-      <?renderCache.subset "Myriad Pro" 0 0 UTF-16 2 296 000100060009000A000D000E000F0010001100120013001400160019001B0022002300240025002600270029002A002B002C002D002E002F0030003100330034003500360037003B00420043004400450046004700480049004A004B004C004D004E004F0050005100530054005500560057005A005B006600C800CF00D300DD00DE00E200E4018E01CF01D201D401EA01F201FE?>
+      <?renderCache.subset "Myriad Pro" 0 0 UTF-16 2 300 000100060009000A000D000E000F0010001100120013001400160019001B0022002300240025002600270029002A002B002C002D002E002F0030003100330034003500360037003B00420043004400450046004700480049004A004B004C004D004E004F0050005100530054005500560057005A005B006600C800CF00D300DD00DE00E200E4018E01CF01D201D401EA01F201FE0343?>
       <?renderCache.subset "Myriad Pro" 1 0 UTF-16 2 236 0001000C000D000F001100130014001B0022002300240025002A002C002E002F00300031003300340037003B0042004300440045004600470049004A004B004C004D004E004F0050005100530054005500560057005A005B006600A600C800CF00D300DD00DE00E200E4018E01CF01D401EA01F201FE?>
    </subform>
    <?templateDesigner DefaultPreviewDynamic 1?>
@@ -16014,10 +16205,10 @@ function setOnDruhPohl(oPohledavka_row_tbl, zpusob_reseni) {
    <?templateDesigner DefaultCaptionFontSettings face:Myriad Pro;size:10;weight:normal;style:normal?>
    <?templateDesigner DefaultValueFontSettings face:Myriad Pro;size:10;weight:normal;style:normal?>
    <?templateDesigner SavePDFWithLog 0?>
+   <?templateDesigner Zoom 100?>
+   <?templateDesigner FormTargetVersion 33?>
    <?templateDesigner SaveTaggedPDF 0?>
    <?templateDesigner SavePDFWithEmbeddedFonts 0?>
-   <?templateDesigner Zoom 143?>
-   <?templateDesigner FormTargetVersion 33?>
    <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
    <?templateDesigner Guidelines v:33000;v:63600;v:294375;h:39750;h:2518800;h:4964250?></template>
 <config xmlns="http://www.xfa.org/schema/xci/3.0/">
@@ -16031,7 +16222,6 @@ function setOnDruhPohl(oPohledavka_row_tbl, zpusob_reseni) {
    </agent>
    <present>
       <!--  [0..n]  -->
-      <destination>pdf</destination>
       <pdf>
          <!--  [0..n]  -->
          <fontInfo>
@@ -16173,7 +16363,7 @@ function setOnDruhPohl(oPohledavka_row_tbl, zpusob_reseni) {
    <xsdConnection name="DataConnection" dataDescription="ELKOZP">
       <uri>..\..\Data\Xsd\05_-_Konecna_zprava.xsd</uri>
       <rootElement>ELKOZP</rootElement>
-      <?templateDesigner fileDigest shaHash="iciYQJqoUdSkHxlulqvlHQDBdV0="?></xsdConnection>
+      <?templateDesigner fileDigest shaHash="xq3yjTBz7/YuGCPqH0k7nALkhLU="?></xsdConnection>
 </connectionSet>
 <xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
    <xfa:data xfa:dataNode="dataGroup"/>
@@ -16467,6 +16657,11 @@ function setOnDruhPohl(oPohledavka_row_tbl, zpusob_reseni) {
                      <neuhrazeno/>
                      <zbyva/>
                   </hotove_vydaje_celk>
+                  <hotove_vydaje_celk_bezDPH>
+                     <vyse/>
+                     <neuhrazeno/>
+                     <zbyva/>
+                  </hotove_vydaje_celk_bezDPH>
                   <hotove_vydaje_detail dd:minOccur="0" dd:maxOccur="-1">
                      <vyse/>
                      <neuhrazeno/>
@@ -16527,14 +16722,14 @@ function setOnDruhPohl(oPohledavka_row_tbl, zpusob_reseni) {
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.2-c001 63.139439, 2011/06/07-10:39:26        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
-         <xmp:MetadataDate>2021-04-30T09:38:49Z</xmp:MetadataDate>
+         <xmp:MetadataDate>2022-07-28T06:34:09Z</xmp:MetadataDate>
          <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
       </rdf:Description>
       <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
          <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
       </rdf:Description>
       <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
-         <xmpMM:DocumentID>uuid:2f3367da-6111-4e54-b487-0dea5c03285f</xmpMM:DocumentID>
+         <xmpMM:DocumentID>uuid:34a16070-10ef-4519-b356-5561422c2770</xmpMM:DocumentID>
          <xmpMM:InstanceID>uuid:b0267b21-fcca-4246-913b-042a7a5c2422</xmpMM:InstanceID>
       </rdf:Description>
       <rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
